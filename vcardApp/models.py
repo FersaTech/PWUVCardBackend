@@ -109,6 +109,6 @@ def send_an_email(sender, created, **kwargs):
     if created:
         orderID = kwargs['instance']
         
-        msg =f"Your order for {orderID.product.name} has been placed successfully!\nYour Order Details are ~ \nOrder ID is → {orderID.ord_id}\nProduct Name → {orderID.product.name}\nCategory → {orderID.product.category.name}\nOrder Price(including GST) → {orderID.ord_price}\nOrder Date → {orderID.ord_date}\nOrder Status → {orderID.ord_status}"
+        msg =f"Your order for {orderID.product.name} has been placed successfully!\nYour Order Details are ~ \nOrder ID is → {orderID.ord_id}\nProduct Name → {orderID.product.name}\nOrder Price(including GST) → {orderID.ord_price}\nOrder Date → {  orderID.ord_date}\nOrder Status → {orderID.ord_status}"
 
         send_mail(subject='Order Placed Successfully!', message=msg, from_email='dehimangshu2020@gmail.com', recipient_list=[orderID.customer.email], fail_silently=False)

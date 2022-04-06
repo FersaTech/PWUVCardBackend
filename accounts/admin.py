@@ -32,7 +32,7 @@ class UserAdmin(BaseUserAdmin):
             'fields': ('email', 'password1', 'password2')}
         ),
     )
-    search_fields = ['email', 'first_name', 'last_name', 'mobile']
+    search_fields = ['email', 'first_name', 'last_name', 'mobile', 'id']
     ordering = ['email']
     filter_horizontal = ()
 
