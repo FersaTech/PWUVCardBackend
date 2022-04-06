@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import CategoryModel, ProductModel, OrderModel
+from .models import CategoryModel, Coupon, ProductModel, OrderModel
 
 # Create your serializers here.
 
@@ -17,8 +17,23 @@ class ProductSerializer(serializers.ModelSerializer):
         fields = "__all__"
 
 
-class OrderSerializer(serializers.ModelSerializer):
 
+class OrderSerializer(serializers.ModelSerializer):
+    # customer = serializers.ReadOnlyField(source='customer.user_id')
+    # product = ProductSerializerForOrder()
     class Meta:
         model = OrderModel
+        fields = ['ord_id', 'customer', 'product', 'ord_quantity', 'ord_price', 'ord_feedback']
+
+
+class OrderListSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = OrderModel
+        fields = "__all__"
+        # fields = ('ord_id', 'customer', 'product', 'ord_quantity', 'ord_price', 'ord_status', 'ord_image', 'ord_feedback', 'ca')
+
+
+class CouponSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Coupon
         fields = "__all__"
