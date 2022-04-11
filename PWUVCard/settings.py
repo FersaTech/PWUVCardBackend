@@ -25,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-5n+_&25j&_=ij==o3n&e)+@fzyb+8poul+bh29a*)a^q=tzb4!'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-if (len(sys.argv) >= 2 and sys.argv[1] == 'runserver':
+if (len(sys.argv) >= 2 and sys.argv[1] == 'runserver'):
         DEBUG = True
 else:
         DEBUG = False
@@ -150,9 +150,13 @@ REST_FRAMEWORK={
     ],
     'DEFAULT_FILTER_BACKENDS': [
         'django_filters.rest_framework.DjangoFilterBackend',
+    ],
+    'DEFAULT_RENDERER_CLASSES': [
+        'rest_framework.renderers.JSONRenderer',
     ]
 }
 
+# SMTP service setup
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = '587'
 EMAIL_HOST_USER = 'dehimangshu2020@gmail.com'
