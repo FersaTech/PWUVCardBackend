@@ -18,7 +18,7 @@ class CategoryAPIView(generics.ListAPIView):
 
 
 class ProductAPIView(generics.ListAPIView):
-    queryset = ProductModel
+    queryset = ProductModel.objects.all()
     serializer_class = ProductSerializer
     filter_backends = [DjangoFilterBackend, SearchFilter]
     filter_fields = ['category']
