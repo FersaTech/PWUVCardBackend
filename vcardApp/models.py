@@ -14,6 +14,9 @@ class Gallery(models.Model):
     third_gallery_image = models.FileField(upload_to='gallery/', blank=True, null=True)
     fourth_gallery_image = models.FileField(upload_to='gallery/', blank=True, null=True)
 
+    class Meta:
+        verbose_name_plural = 'Gallery'
+
 class CategoryModel(models.Model):
     id = models.UUIDField(default=uuid.uuid4, editable=False, primary_key=True)
     name = models.CharField(verbose_name='Name of Category: ', max_length=50)

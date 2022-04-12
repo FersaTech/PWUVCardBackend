@@ -1,6 +1,6 @@
 from django.contrib import admin
 from import_export.admin import ImportExportMixin
-from .models import CategoryModel, ProductModel, OrderModel
+from .models import CategoryModel, Gallery, ProductModel, OrderModel
 
 # Register your models here.
 admin.site.site_header = "Print With Us Admin"
@@ -11,3 +11,4 @@ class OrdersAdmin(ImportExportMixin, admin.ModelAdmin):
     list_display = ['customer', 'product', 'ord_price','cancellation_status', 'ord_date']
     list_filter = ['cancellation_status']
 admin.site.register(OrderModel, OrdersAdmin)
+admin.site.register(Gallery)
