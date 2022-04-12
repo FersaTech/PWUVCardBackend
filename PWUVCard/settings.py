@@ -47,10 +47,12 @@ INSTALLED_APPS = [
     'accounts',
     'django_filters',
     'import_export',
-    'rest_framework.authtoken'
+    'rest_framework.authtoken',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -165,3 +167,7 @@ EMAIL_USE_TLS = True
 
 # For Custom User Model
 AUTH_USER_MODEL = "accounts.User"
+
+# For CORS
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOW_CREDENTIALS = True

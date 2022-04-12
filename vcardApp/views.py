@@ -5,8 +5,8 @@ from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.authtoken.models import Token
 
 from accounts.models import User
-from .serializers import CategorySerializer, CouponSerializer, OrderListSerializer, ProductSerializer, OrderSerializer
-from .models import CategoryModel, Coupon, ProductModel, OrderModel
+from .serializers import CategorySerializer, CouponSerializer, GallerySerializer, OrderListSerializer, ProductSerializer, OrderSerializer
+from .models import CategoryModel, Coupon, ProductModel, OrderModel, Gallery
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.views import APIView
 
@@ -59,8 +59,11 @@ class OrderUpdateAPIView(generics.UpdateAPIView):
     lookup_url_kwarg = 'ord_id'
 
 
-class CouponRetrieveAPIView(generics.RetrieveAPIView):
+class CouponListAPIView(generics.ListAPIView):
     queryset = Coupon.objects.all()
     serializer_class = CouponSerializer
-    lookup_fields = "name"
-    lookup_url_kwarg = "cpn_id"
+
+
+class GalleryAPIView(generics.ListAPIView):
+    queryset = Gallery.objects.all()
+    serializer_class = GallerySerializer

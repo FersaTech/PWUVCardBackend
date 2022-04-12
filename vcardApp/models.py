@@ -8,7 +8,11 @@ from accounts.models import User
 
 
 # Create your models here.
-
+class Gallery(models.Model):
+    first_gallery_image = models.FileField(upload_to='gallery/', blank=True, null=True)
+    second_gallery_image = models.FileField(upload_to='gallery/', blank=True, null=True)
+    third_gallery_image = models.FileField(upload_to='gallery/', blank=True, null=True)
+    fourth_gallery_image = models.FileField(upload_to='gallery/', blank=True, null=True)
 
 class CategoryModel(models.Model):
     id = models.UUIDField(default=uuid.uuid4, editable=False, primary_key=True)
@@ -50,6 +54,10 @@ THICKNESS_CHOICES = [
 class ProductModel(models.Model):
     id = models.UUIDField(default=uuid.uuid4, editable=False, primary_key=True)
     name = models.CharField(max_length=50, verbose_name='Name of Product')
+    image1 = models.FileField(upload_to='product_images/', blank=False, null=False)
+    image2 = models.FileField(upload_to='product_images/', blank=True, null=True)
+    image3 = models.FileField(upload_to='product_images/', blank=True, null=True)
+    image4 = models.FileField(upload_to='product_images/', blank=True, null=True)
     category = models.ForeignKey(CategoryModel, blank=True, null=True, related_name="catagories", on_delete=models.PROTECT)
     shape = models.CharField(max_length=20, choices=SHAPE_CHOICES, default="rectangle")
     finish = models.CharField(max_length=20, choices=FINSIH_CHOICES, default="matt")

@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import CategoryModel, Coupon, ProductModel, OrderModel
+from .models import CategoryModel, Coupon, ProductModel, OrderModel, Gallery
 
 # Create your serializers here.
 
@@ -36,4 +36,10 @@ class OrderListSerializer(serializers.ModelSerializer):
 class CouponSerializer(serializers.ModelSerializer):
     class Meta:
         model = Coupon
+        fields = "__all__"
+
+
+class GallerySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Gallery
         fields = "__all__"
