@@ -9,7 +9,7 @@ from accounts.models import User
 
 # Create your models here.
 class Gallery(models.Model):
-    first_gallery_image = models.FileField(upload_to='static/gallery/', blank=True, null=True)
+    first_gallery_image = models.FileField(upload_to='gallery/', blank=True, null=True)
     second_gallery_image = models.FileField(upload_to='gallery/', blank=True, null=True)
     third_gallery_image = models.FileField(upload_to='gallery/', blank=True, null=True)
     fourth_gallery_image = models.FileField(upload_to='gallery/', blank=True, null=True)
