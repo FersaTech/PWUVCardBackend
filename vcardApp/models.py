@@ -9,7 +9,7 @@ from accounts.models import User
 
 # Create your models here.
 class Gallery(models.Model):
-    first_gallery_image = models.FileField(upload_to='gallery/', blank=True, null=True)
+    first_gallery_image = models.FileField(upload_to='static/gallery/', blank=True, null=True)
     second_gallery_image = models.FileField(upload_to='gallery/', blank=True, null=True)
     third_gallery_image = models.FileField(upload_to='gallery/', blank=True, null=True)
     fourth_gallery_image = models.FileField(upload_to='gallery/', blank=True, null=True)
@@ -88,7 +88,7 @@ class OrderModel(models.Model):
     cancellation_status         = models.CharField(max_length=50, blank=False, null=False, default='No')
     cancellation_date           = models.DateTimeField(blank=True, null=True)
     cancellation_reason         = models.CharField(blank=True, default="None", max_length=50)
-    cancellation_description    = models.TextField(blank=True, default=None)
+    cancellation_description    = models.TextField(blank=True, default="None")
     user_gst_num                = models.CharField(max_length=100, blank=True, default='Not Provided')
     user_refund_cheque          = models.FileField(upload_to='order/OrderRefund/', blank=True)
 
