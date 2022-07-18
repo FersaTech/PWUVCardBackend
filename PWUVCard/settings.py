@@ -50,11 +50,9 @@ INSTALLED_APPS = [
     'django_filters',
     'import_export',
     'rest_framework.authtoken',
-    'corsheaders',
 ]
 
 MIDDLEWARE = [
-    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -91,7 +89,7 @@ WSGI_APPLICATION = 'PWUVCard.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'printwithus',
+        'NAME': 'pwu_v_card',
         'HOST': 'localhost',
         'USER': 'postgres',
         'PASSWORD': 'root',
@@ -164,15 +162,15 @@ REST_FRAMEWORK={
 }
 
 # SMTP service setup
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = '587'
-EMAIL_HOST_USER = 'dehimangshu2020@gmail.com'
-EMAIL_HOST_PASSWORD = 'rynmqxwphptywcbe'
-EMAIL_USE_TLS = True
+# EMAIL_HOST = 'smtp.gmail.com'
+# EMAIL_PORT = '587'
+# EMAIL_HOST_USER = 'dehimangshu2020@gmail.com'
+# EMAIL_HOST_PASSWORD = 'rynmqxwphptywcbe'
+# EMAIL_USE_TLS = True
 
 # For Custom User Model
 AUTH_USER_MODEL = "accounts.User"
 
 # For CORS
-CORS_ORIGIN_ALLOW_ALL = True
-CORS_ALLOW_CREDENTIALS = True
+# CORS_ORIGIN_ALLOW_ALL = True
+# CORS_ALLOW_CREDENTIALS = True

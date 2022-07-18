@@ -23,7 +23,7 @@ class OrderSerializer(serializers.ModelSerializer):
     # product = ProductSerializerForOrder()
     class Meta:
         model = OrderModel
-        fields = ['ord_id', 'customer', 'product', 'ord_quantity', 'ord_price', 'ord_feedback']
+        fields = ['ord_id', 'customer', 'product', 'ord_quantity', 'ord_price', 'ord_feedback','ord_image', 'is_read', 'is_complete']
 
 
 class OrderListSerializer(serializers.ModelSerializer):

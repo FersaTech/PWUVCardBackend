@@ -24,6 +24,7 @@ class User(AbstractBaseUser):
     last_name = models.CharField(max_length=50, blank=True)
     mobile = models.CharField(max_length=50, blank=True)
     address= models.CharField(max_length=100, blank=True)
+    area_pin = models.CharField(max_length=100, blank=True)
     profile_picture = models.FileField(upload_to="account/profile_pictures/", blank=True)
     is_merchant = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)

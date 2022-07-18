@@ -36,7 +36,7 @@ SHAPE_CHOICES = [
 
 # Finish choice for the cards
 FINSIH_CHOICES = [
-    ("matt", "Matt"),
+    ("matte", "Matte"),
     ("gloss", "Gloss"),
     ("non lamination", "Non Lamination")
 ]
@@ -91,9 +91,11 @@ class OrderModel(models.Model):
     cancellation_description    = models.TextField(blank=True, default="None")
     user_gst_num                = models.CharField(max_length=100, blank=True, default='Not Provided')
     user_refund_cheque          = models.FileField(upload_to='order/OrderRefund/', blank=True)
+    is_complete                 = models.BooleanField(default=False)
+    is_read                     = models.BooleanField(default=False)
 
     def __str__(self):
-        return self.customer.email
+        return f"{self.customer.first_name} {self.customer.last_name}"
     
     def save(self, *args, **kwargs):
         gst = (self.product.price*self.ord_quantity) * 0.18
@@ -115,11 +117,11 @@ class Coupon(models.Model):
         verbose_name_plural = "Coupons"
 
 
-@receiver(post_save, sender=OrderModel)
-def send_an_email(sender, created, **kwargs):
-    if created:
-        orderID = kwargs['instance']
+# @receiver(post_save, sender=OrderModel)
+# def send_an_email(sender, created, **kwargs):
+#     if created:
+#         orderID = kwargs['instance']
         
-        msg =f"Your order for {orderID.product.name} has been placed successfully!\nYour Order Details are ~ \nOrder ID is → {orderID.ord_id}\nProduct Name → {orderID.product.name}\nOrder Price(including GST) → {orderID.ord_price}\nOrder Date → {  orderID.ord_date}\nOrder Status → {orderID.ord_status}"
+#         msg =f"Your order for {orderID.product.name} has been placed successfully!\nYour Order Details are ~ \nOrder ID is → {orderID.ord_id}\nProduct Name → {orderID.product.name}\nOrder Price(including GST) → {orderID.ord_price}\nOrder Date → {  orderID.ord_date}\nOrder Status → {orderID.ord_status}"
 
-        send_mail(subject='Order Placed Successfully!', message=msg, from_email='dehimangshu2020@gmail.com', recipient_list=[orderID.customer.email], fail_silently=False)
+#         send_mail(subject='Order Placed Successfully!', message=msg, from_email='dehimangshu2020@gmail.com', recipient_list=[orderID.customer.email], fail_silently=False)

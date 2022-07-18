@@ -23,6 +23,7 @@ class ProductAPIView(generics.ListAPIView):
     filter_backends = [DjangoFilterBackend, SearchFilter]
     filter_fields = ['category']
     search_fields = ['@name', '@description', '@category__name']
+    
 
 
 # View for Product Detail Listing
@@ -42,12 +43,18 @@ class OrderAddAPIView(generics.CreateAPIView):
 
 class OrderListAPIView(APIView):
     permission_classes = [IsAuthenticated]
+    search_fields = ['@ord_id', '@product__id', '@product__name', '@customer__first_name', '@customer__last_name']
     def get(self, request):
         tokenData = request.headers['Authorization'].split()[1]
         id = User.objects.get(email=Token.objects.get(key=tokenData).user).id
+        admin_user = User.objects.get(email=Token.objects.get(key=tokenData).user).admin
+        a = OrderModel
+        if admin_user:
+            print('This works')
+            a = OrderModel.objects.all()
         
-        a = OrderModel.objects.filter(customer=id)
-        serializer = OrderSerializer(a, many=True)
+        else: a = OrderModel.objects.filter(customer=id)
+        serializer = OrderListSerializer(a, many=True)
         return Response(serializer.data)
 
 
