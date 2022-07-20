@@ -95,6 +95,8 @@ class OrderModel(models.Model):
     is_read                     = models.BooleanField(default=False)
 
     def __str__(self):
+        if (self.customer.first_name == "" and self.customer.last_name == ""):
+            return f"{self.customer.email}"
         return f"{self.customer.first_name} {self.customer.last_name}"
     
     def save(self, *args, **kwargs):

@@ -133,3 +133,6 @@ node_modules/
 
 # vscode settings excluded
 .vscode/
+
+# media files excluded
+media/*
